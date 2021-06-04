@@ -9,7 +9,7 @@ public class Json {
 
     private static ObjectMapper myObjectMapper = defaultObjectMapper();
 
-    private static ObjectMapper defaultObjectMapper(){
+    private static ObjectMapper defaultObjectMapper() {
         ObjectMapper om = new ObjectMapper();
         om.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         return om;
@@ -23,7 +23,7 @@ public class Json {
         return myObjectMapper.treeToValue(node, clazz);
     }
 
-    public static JsonNode toJson(Object obj){
+    public static JsonNode toJson(Object obj) {
         return myObjectMapper.valueToTree(obj);
     }
 
@@ -37,7 +37,7 @@ public class Json {
 
     private static String generateJson(Object obj, boolean pretty) throws JsonProcessingException {
         ObjectWriter objectWriter = myObjectMapper.writer();
-        if(pretty){
+        if (pretty) {
             objectWriter = objectWriter.with(SerializationFeature.INDENT_OUTPUT);
         }
         return objectWriter.writeValueAsString(obj);
